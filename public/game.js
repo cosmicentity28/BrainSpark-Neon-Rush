@@ -24,7 +24,7 @@ function handleMessage(m){
  if(m.type==="joined"){joined=true;myId=m.id;hostId=m.hostId;roomCode=m.code;ui.join.disabled=true;ui.join.textContent="JOINED";ui.status.textContent="Room created. Invite friends with this code.";updatePlayers(m.players);showRoom({code:m.code,hostId:m.hostId,maxPlayers:m.maxPlayers});}
  if(m.type==="room")showRoom(m);
  if(m.type==="players"||m.type==="state")updatePlayers(m.players);
- if(m.type==="countdown"){showRace();clearInterval(countdownTimer);let n=3;ui.message.textContent="3";countdownTimer=setInterval(()=>{n--;ui.message.textContent=n>0?String(n):n===0?"GO!":"";if(n<0)clearInterval(countdownTimer)},1000)}
+ if(m.type==="countdown"){showRace();clearInterval(countdownTimer);const tick=()=>{const left=m.startAt-Date.now();const n=Math.ceil(left/1000);ui.message.textContent=left>0?String(n):left>-650?"GO!":"";if(left<=-650)clearInterval(countdownTimer)};tick();countdownTimer=setInterval(tick,100)}
  if(m.type==="results"){updatePlayers(m.players);const winner=m.players[0];ui.message.textContent=winner?"FINISH — "+winner.name+" WINS!":"RACE COMPLETE";setTimeout(()=>{ui.message.textContent="";showLobby();ui.start.disabled=myId!==hostId;ui.start.textContent=myId===hostId?"RACE AGAIN":"WAITING FOR HOST"},3500)}
  if(m.type==="error"){toast(m.message);ui.join.disabled=!ws||ws.readyState!==WebSocket.OPEN}
 }
