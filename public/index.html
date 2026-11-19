@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#090b18">
+<meta name="description" content="NEON RUSH — multiplayer arcade racing from BrainSpark Games.">
+<title>NEON RUSH — BrainSpark Games</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="game"></div>
+<header class="topbar"><div class="brand">BRAINSPARK <span>GAMES</span></div><div id="roomLabel">CONNECTING</div></header>
+<section id="lobby" class="panel">
+  <div class="eyebrow">MULTIPLAYER ARCADE RACING</div>
+  <h1>NEON <b>RUSH</b></h1>
+  <p>Race the neon circuit. Outsmart the pack. Reach the finish.</p>
+  <input id="playerName" maxlength="16" autocomplete="nickname" placeholder="Racer name" value="Racer" aria-label="Racer name">
+  <input id="roomCode" maxlength="5" autocapitalize="characters" placeholder="Room code (optional)" aria-label="Room code">
+  <button id="joinBtn">FIND / JOIN RACE</button>
+  <div class="small">Leave room code blank to join an available room.</div>
+  <div id="status" role="status">Connecting to game server…</div>
+  <button id="startBtn" class="secondary" disabled>START RACE</button>
+</section>
+<div id="hud" class="hidden">
+  <div class="hudbox"><small>POSITION</small><strong id="position">—</strong></div>
+  <div class="hudbox"><small>SPEED</small><strong><span id="speed">0</span><i> km/h</i></strong></div>
+  <div class="hudbox"><small>PROGRESS</small><strong id="progress">0%</strong></div>
+</div>
+<div id="raceMessage" aria-live="polite"></div>
+<div id="controls" class="hidden">
+  <div class="steering"><button id="leftBtn" aria-label="Steer left">◀</button><button id="rightBtn" aria-label="Steer right">▶</button></div>
+  <div class="pedals"><button id="brakeBtn">BRAKE</button><button id="gasBtn">ACCELERATE</button></div>
+</div>
+<div id="leaderboard" class="hidden"></div>
+<div id="errorToast" role="alert"></div>
+<script type="module" src="game.js"></script>
+</body>
+</html>
