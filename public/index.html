@@ -17,10 +17,15 @@
   <p>Race the neon circuit. Outsmart the pack. Reach the finish.</p>
   <input id="playerName" maxlength="16" autocomplete="nickname" placeholder="Racer name" value="Racer" aria-label="Racer name">
   <input id="roomCode" maxlength="5" autocapitalize="characters" placeholder="Room code (optional)" aria-label="Room code">
-  <button id="joinBtn">FIND / JOIN RACE</button>
+  <button id="joinBtn" disabled>CONNECTING…</button>
   <div class="small">Leave room code blank to join an available room.</div>
   <div id="status" role="status">Connecting to game server…</div>
-  <button id="startBtn" class="secondary" disabled>START RACE</button>
+  <div id="roomActions" class="hidden">
+    <div class="room-code-line">ROOM CODE <strong id="roomCodeDisplay">-----</strong></div>
+    <button id="copyRoomBtn" class="secondary">COPY ROOM CODE</button>
+    <div id="roomCount" class="small">1 / 8 racers</div>
+  </div>
+  <button id="startBtn" class="secondary hidden" disabled>START RACE</button>
 </section>
 <div id="hud" class="hidden">
   <div class="hudbox"><small>POSITION</small><strong id="position">—</strong></div>
