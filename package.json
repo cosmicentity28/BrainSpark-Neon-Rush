@@ -1,13 +1,14 @@
 {
   "name": "brainspark-neon-rush",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "BrainSpark Games - Neon Rush multiplayer racing prototype",
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
     "dev": "node --watch server/index.js",
-    "check": "node --check server/index.js"
+    "check": "node --check server/index.js && node --check tests/server.test.js && node --input-type=module --check < public/game.js",
+    "test": "node --test"
   },
   "dependencies": { "ws": "^8.18.0" },
   "engines": { "node": ">=20" }
